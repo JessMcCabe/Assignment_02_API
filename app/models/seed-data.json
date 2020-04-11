@@ -1,0 +1,92 @@
+{
+  "users": {
+    "_model": "User",
+    "homer": {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    "marge": {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    "lisa": {
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "email": "lisa@simpson.com",
+      "password": "secret"
+    },
+    "bart": {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  },
+  "pois": {
+    "_model": "Poi",
+    "one": {
+      "name": "Kilkenny Castle",
+      "description": "A beautiful castle in Kilkenny",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583264770/Kilkenny%20Castle.jpg",
+      "author": "->users.homer"
+    },
+    "two": {
+      "name": "Johnstown Castle",
+      "description": "Johnstown Castle Estate, Museum & Gardens has a long and colourful story stretching over 800 years",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583264861/Johnstown%20Castle.jpg",
+      "author": "->users.homer"
+    },
+    "three": {
+      "name": "Blarney Castle",
+      "description": "Dating back to 1446, thousands of tourists make their way here each year to kiss the renowned Blarney Stone",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508046/Blarney%20Castle.jpg",
+      "author": "->users.marge"
+    },
+    "four": {
+      "name": "Bunratty Castle",
+      "description": "The fourth castle to be built on this site, Bunratty Castle sits on a 970 AD ancient Viking trading camp",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508027/Bunratty%20Castle.jpg",
+      "author": "->users.marge"
+    },
+    "five": {
+      "name": "Cahir Castle",
+      "description": "Cahir Castles is easily one of the best Irish castles. You can still see the defense structures, keep, and tower that have remained intact since its construction in 1142",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508004/Cahir%20Castle.jpg",
+      "author": "->users.lisa"
+    },
+    "six": {
+      "name": "Ashford Castle",
+      "description": "Built in 1228, this Victorian castle has been expanded upon several times and is now both a five-star luxury hotel and a popular wedding venue",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507984/Ashford%20Castle.jpg",
+      "author": "->users.homer"
+    },
+    "seven": {
+      "name": "Malahide Castle",
+      "description": "In addition to the castle and gardens, the parklands are full of things to do for the whole family",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507965/Malahide%20Castle.jpg",
+      "author": "->users.lisa"
+    },
+    "eight": {
+      "name": "Ross Castle",
+      "description": "Said to have a ghost roaming the halls, this 15th-century castle is loaded with historic myths that you’ll be sure to hear about on your guided tour",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507946/Ross%20Castle.jpg",
+      "author": "->users.bart"
+    },
+    "nine": {
+      "name": "Rock Of Cashel",
+      "description": "Home to an extensive collection of medieval architecture and Celtic art, this enormous compex has everything you could want in a castle experience",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507924/Rock%20Of%20Cashel.jpg",
+      "author": "->users.bart"
+    },
+    "ten": {
+      "name": "Birr Castle",
+      "description": "Because it’s home to Brendan Parsons, the 7th Earl of Rosse, the castle’s residential areas aren’t always open to the public, but the gardens and grounds are full of beautiful and historic sights",
+      "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507902/Birr%20Castle.jpg",
+      "author": "->users.lisa"
+    }
+  }
+}

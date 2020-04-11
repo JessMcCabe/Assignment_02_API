@@ -1,0 +1,18 @@
+<section class="ui raised segment">
+    <div class="ui grid ">
+        <div class="ui form six wide column">
+            <div class="ui stacked segment">
+                <form action="/submit" method="POST">
+                    <h3 class="ui header">POI</h3>
+                    <div class="field"><label>Name</label> <input placeholder="Name" type="text" name="name" /></div>
+                    <div class="field"><label>Description</label> <input type="text" name="description" /></div>
+                    <input type="hidden" name="author" value={{currentUser}}>
+                    <button class="ui blue submit button">Submit</button>
+                </form>
+            </div>
+        </div>
+        <aside class="six wide column">
+            <img src="images/poi1.jpg" class="ui medium image">
+        </aside>
+    </div>
+</section>
