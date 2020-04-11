@@ -53,6 +53,41 @@ class PoiService {
             return null;
         }
     }
+    async findAll() {
+        try {
+            const response = await axios.get(this.baseUrl + '/api/poi');
+            return response.data;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async submitPoi(id, poi) {
+        try {
+            const response = await axios.post(this.baseUrl + '/api/user/' + id + '/poi', poi);
+            return response.data;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async findByAuthor(id) {
+        try {
+            const response = await axios.get(this.baseUrl + '/api/user/' + id + '/pois');
+            return response.data;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async deleteAll() {
+        try {
+            const response = await axios.delete(this.baseUrl + '/api/pois');
+            return response.data;
+        } catch (e) {
+            return null;
+        }
+    }
 }
 
 module.exports = PoiService;
