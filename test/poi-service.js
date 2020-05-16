@@ -73,14 +73,23 @@ class PoiService {
 
     async findByAuthor(id) {
         try {
-            const response = await axios.get(this.baseUrl + '/api/user/' + id + '/pois');
+            const response = await axios.get(this.baseUrl + '/api/user/' + id + '/poi');
             return response.data;
         } catch (e) {
             return null;
         }
     }
 
-    async deleteAll() {
+    async findByID(id) {
+        try {
+            const response = await axios.get(this.baseUrl + '/api/poi/' +id);
+            return response.data;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async deleteAllPOIs() {
         try {
             const response = await axios.delete(this.baseUrl + '/api/pois');
             return response.data;
@@ -88,6 +97,16 @@ class PoiService {
             return null;
         }
     }
+    async deleteOnePOI() {
+        try {
+            const response = await axios.delete(this.baseUrl + '/api/poi/' +id);
+            return response.data;
+        } catch (e) {
+            return null;
+        }
+    }
+
+
 }
 
 module.exports = PoiService;

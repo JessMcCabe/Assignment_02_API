@@ -30,14 +30,29 @@
     {
       "name": "Wonder Castle",
       "description": "A wonderful castle"
+
     },
     {
-      "amount": "Easter Castle",
-      "method": "A castle full of easter eggs"
+      "name": "Easter Castle",
+      "description": "A castle full of easter eggs"
+
     },
     {
-      "amount": "Cat Castle",
-      "method": "A castle full of cats"
+      "name": "Cat Castle",
+      "description": "A castle full of cats"
+
     }
-  ]
+  ],
+  "newPoi": {
+    "name": "New Castle",
+    "description": "A wonderful new castle"
+  },
+  "newPoiWithAuthor": [
+    {
+    "name": "New Castle With Author",
+    "description": "A wonderful new castle",
+    "author": "5ebfd092e388910c206753fb"
+  }
+    ]
 }
+
