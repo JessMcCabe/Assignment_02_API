@@ -29,18 +29,18 @@
   "pois": [
     {
       "name": "Wonder Castle",
-      "description": "A wonderful castle",
-      "author": "5ebfd092e388910c206753fb"
+      "description": "A wonderful castle"
+
     },
     {
       "name": "Easter Castle",
-      "description": "A castle full of easter eggs",
-      "author": "5ebfd092e388910c206753fb"
+      "description": "A castle full of easter eggs"
+
     },
     {
       "name": "Cat Castle",
-      "description": "A castle full of cats",
-      "author": "5ebfd092e388910c206753fb"
+      "description": "A castle full of cats"
+
     }
   ],
   "newPoi": {

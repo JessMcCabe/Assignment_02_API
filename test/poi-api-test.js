@@ -61,17 +61,17 @@ suite('POI API tests', function () {
 
     test('get poi detail', async function () {
         for (let p of pois) {
-            await poiService.submitPoi(p);
+            await poiService.submitPoi(id, p);
         }
 
-        const allPOIs = await poiService.getPOIs();
+        const allPOIs = await poiService.findAll();
         for (var i = 0; i < pois.length; i++) {
             assert(_.some([allPOIs[i]], pois[i]), 'returnedPoi must be a superset of newPOI');
         }
     });
 
     test('get all pois empty', async function () {
-        const allPOIs = await poiService.getPOIs();
+        const allPOIs = await poiService.findAll();
         assert.equal(allPOIs.length, 0);
     });
 
