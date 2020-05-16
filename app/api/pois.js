@@ -38,6 +38,12 @@ const Pois = {
             await Poi.deleteMany({});
             return { success: true };
         }
+    }, deleteOne: {
+        auth: false,
+        handler: async function(request, h) {
+            await Poi.deletePOI({});
+            return { success: true };
+        }
     }
 };
 

@@ -16,9 +16,9 @@ suite('User API tests', function () {
         await poiService.deleteAllUsers();
     });
 
-    teardown(async function () {
-        await poiService.deleteAllUsers();
-    });
+    //teardown(async function () {
+       // await poiService.deleteAllUsers();
+   // });
 
     test('create a user', async function () {
         const returnedUser = await poiService.createUser(newUser);
