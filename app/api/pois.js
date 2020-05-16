@@ -19,6 +19,13 @@ const Pois = {
             return pois;
         }
     },
+    findByID: {
+        auth: false,
+        handler: async function(request, h) {
+            const pois = await Poi.find({ _id: request.params.id });
+            return pois;
+        }
+    },
     submitPoi: {
         auth: false,
         handler: async function(request, h) {
