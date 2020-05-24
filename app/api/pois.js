@@ -22,7 +22,7 @@ const Pois = {
     findByID: {
         auth: false,
         handler: async function(request, h) {
-            const pois = await Poi.find({ _id: request.params.id });
+            const pois = await Poi.findOne({ _id: request.params.id });
             return pois;
         }
     },
@@ -45,7 +45,7 @@ const Pois = {
             await Poi.deleteMany({});
             return { success: true };
         }
-    }, deleteOne: {
+    }, deleteOnePoi: {
         auth: false,
         handler: async function(request, h) {
             await Poi.deletePOI({});
