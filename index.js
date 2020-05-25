@@ -26,7 +26,7 @@ async function init() {
     await server.register(require('@hapi/inert'));
     await server.register(require('@hapi/vision'));
     await server.register(require('@hapi/cookie'));
-
+    await server.register(require('hapi-auth-jwt2'));
     server.validator(require('@hapi/joi'))
 
     ImageStore.configure(credentials);
@@ -42,7 +42,7 @@ async function init() {
         layout: true,
         isCached: false,
     });
-
+    const utils = require('./app/api/utils.js');
 
     server.auth.strategy('session', 'cookie', {
         cookie: {
@@ -51,6 +51,12 @@ async function init() {
             isSecure: false
         },
         redirectTo: '/',
+    });
+
+    server.auth.strategy('jwt', 'jwt', {
+        key: 'secretpasswordnotrevealedtoanyone',
+        validate: utils.validate,
+        verifyOptions: { algorithms: ['HS256'] },
     });
 
     server.auth.default('session');
