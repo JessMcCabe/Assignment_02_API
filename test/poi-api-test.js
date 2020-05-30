@@ -10,7 +10,7 @@ suite('POI API tests', function () {
     let pois = fixtures.pois;
     let newPOI = fixtures.newPoi;
     let newPOIWithAuthor = fixtures.newPoiWithAuthor;
-    let id = "5eca9b446ddd3a0740738bb0"
+    let id = "5ebfd092e388910c206753fb"
 
     const poiService = new PoiService(fixtures.poiService);
 
@@ -19,7 +19,7 @@ suite('POI API tests', function () {
     });
 
     teardown(async function () {
-        await poiService.deleteAllPOIs();
+       await poiService.deleteAllPOIs();
     });
 
     test('create a poi', async function () {
@@ -30,7 +30,7 @@ suite('POI API tests', function () {
 
     test('get poi', async function () {
         const p1 = await poiService.submitPoi(id, newPOIWithAuthor);
-        const p2 = await poiService.findByID(p1._id);
+        const p2 = await poiService.findByAuthor(id);
         assert.deepEqual(p1, p2);
     });
 
@@ -46,8 +46,8 @@ suite('POI API tests', function () {
         let p = await poiService.submitPoi(id, newPOI);
         assert(p._id != null);
         await poiService.deleteOnePOI(p._id);
-        let p2 = await poiService.findByID(p._id);
-        assert(p2 == null);
+        p = await poiService.findByID(p._id);
+        assert(p == null);
     });
 
     test('get all pois', async function () {
