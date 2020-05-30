@@ -2,7 +2,13 @@
 
 const User = require('../models/user');
 const Boom = require('@hapi/boom');
-const utils = require('./utils.js');
+const Joi = require('@hapi/joi');
+const utils = require('../api/utils')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+=======
+
+
 
 const Users = {
 
@@ -49,14 +55,43 @@ const Users = {
     create: {
         auth: false,
         handler: async function(request, h) {
-            const newUser = new User(request.payload);
-            const user = await newUser.save();
+            const payload = request.payload;
+            const hash = await bcrypt.hash(payload.password, saltRounds);    // ADDED
+            const newUser = new User({
+                firstName: payload.firstName,
+                lastName: payload.lastName,
+                email: payload.email,
+                password: hash                             // EDITED
+            });
+            let user = await newUser.save();
             if (user) {
                 return h.response(user).code(201);
             }
-            return Boom.badImplementation('error creating user');
         }
     },
+
+    auth: {
+        auth: false,
+        handler: async function(request, h) {
+            //const payload = request.payload;
+            const { email, password } = request.payload;
+            try {
+                let user = await User.findByEmail(email);
+                if (!user) {
+                    const message = 'Email address is not registered';
+                    throw Boom.unauthorized(message);
+                }
+                if (!await user.comparePassword(password)) {         // EDITED (next few lines)
+                    const message = 'Password mismatch';
+                    throw Boom.unauthorized(message);
+                } const token = utils.createToken(user);
+                return h.response({ success: true, token: token }).code(201);
+            } catch (err) {
+                return Boom.notFound('internal db failure');
+            }
+        }
+    },
+
 
     deleteAll: {
         auth: false,
