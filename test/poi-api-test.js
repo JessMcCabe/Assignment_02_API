@@ -18,9 +18,9 @@ suite('POI API tests', function () {
         await poiService.deleteAllPOIs();
     });
 
-    //teardown(async function () {
-    //    await poiService.deleteAllPOIs();
-    //});
+    teardown(async function () {
+       await poiService.deleteAllPOIs();
+    });
 
     test('create a poi', async function () {
         const returnedPOI = await poiService.submitPoi(id, newPOI);

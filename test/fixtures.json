@@ -5,26 +5,26 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$.Ie06Sivhxx/hJyQSBJESuiFsCBUBGKah6aW.MVh1AZk7j9XRRvEm"
     },
     {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$V8oBkEINlYHCtK.Cxn0eKufKJdOBKxpEG/NrYqnZMO7jxL74lqEvy"
     },
     {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$t15LqLiuOAa1pLyMah6Cbe8pegULX7yQarANYkGC5zBgrIT7MCsqm"
     }
   ],
   "newUser": {
     "firstName": "Maggie",
     "lastName": "Simpson",
     "email": "maggie@simpson.com",
-    "password": "secret"
+    "password": "$2b$10$Sx0iUOjZkhpFJJZz7wnwd.aCOgoIw22n5I1Zvnv6Q3Vmn7HN45Fr."
   },
   "pois": [
     {
