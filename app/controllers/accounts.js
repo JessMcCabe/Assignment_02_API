@@ -2,6 +2,8 @@
 
 const User = require('../models/user');
 const Boom = require('@hapi/boom');
+const Joi = require('@hapi/joi');
+
 const Accounts = {
     index: {
         auth: false,
@@ -12,18 +14,39 @@ const Accounts = {
     showSignup: {
         auth: false,
         handler: function(request, h) {
-            return h.view('signup',
-                { title: 'Sign up for POI Account' });
+            return h.view('signup', { title: 'Sign up for POI Account' });
         }
     },
     signup: {
         auth: false,
+        validate: {
+            payload: {
+                firstName: Joi.string().required(),
+                lastName: Joi.string().required(),
+                email: Joi.string()
+                    .email()
+                    .required(),
+                password: Joi.string().required()
+            },
+            options: {
+                abortEarly: false
+            },
+            failAction: function(request, h, error) {
+                return h
+                    .view('signup', {
+                        title: 'Sign up error',
+                        errors: error.details
+                    })
+                    .takeover()
+                    .code(400);
+            }
+        },
         handler: async function(request, h) {
-            const payload = request.payload;
             try {
-                let existingUser = await User.findOne({email: payload.email});
-                if (existingUser) {
-                    const message = 'Email address is already registered to a user';
+                const payload = request.payload;
+                let user = await User.findByEmail(payload.email);
+                if (user) {
+                    const message = 'Email address is already registered';
                     throw Boom.badData(message);
                 }
                 const newUser = new User({
@@ -32,12 +55,11 @@ const Accounts = {
                     email: payload.email,
                     password: payload.password
                 });
-                const user = await newUser.save();
-                request.cookieAuth.set({id: user.id});
+                user = await newUser.save();
+                request.cookieAuth.set({ id: user.id });
                 return h.redirect('/home');
             } catch (err) {
-                return h.view('login', {errors: [{message: err.message}]});
-
+                return h.view('signup', { errors: [{ message: err.message }] });
             }
         }
     },
@@ -49,6 +71,26 @@ const Accounts = {
     },
     login: {
         auth: false,
+        validate: {
+            payload: {
+                email: Joi.string()
+                    .email()
+                    .required(),
+                password: Joi.string().required()
+            },
+            options: {
+                abortEarly: false
+            },
+            failAction: function(request, h, error) {
+                return h
+                    .view('login', {
+                        title: 'Sign in error',
+                        errors: error.details
+                    })
+                    .takeover()
+                    .code(400);
+            }
+        },
         handler: async function(request, h) {
             const { email, password } = request.payload;
             try {
@@ -65,44 +107,63 @@ const Accounts = {
             }
         }
     },
-    showSettings: {
-        handler: async function(request, h) {
-            try {
-                const id = request.auth.credentials.id;
-                const userDetails = await User.findById(id).lean();
-                return h.view('settings', {title: 'POI Account Settings', user: userDetails});
-            } catch (err) {
-                return h.view('login', {errors: [{message: err.message}]});
-            }
-        }
-    },
-    updateSettings: {
-        handler: async function(request, h) {
-            try{
-                const payload = request.payload;
-                const id = request.auth.credentials.id;
-                const userDetails = await User.updateOne({_id : id},{
-                    firstName: payload.firstName,
-                    lastName: payload.lastName,
-                    email: payload.email,
-                    password: payload.password});
-                return h.redirect('/settings');
-            }catch(err){
-                return h.view('settings', { errors: [{ message: err.message }] });
-
-
-            }
-        }
-    },
-
-
     logout: {
+        auth: false,
         handler: function(request, h) {
             request.cookieAuth.clear();
             return h.redirect('/');
         }
+    },
+    showSettings: {
+        handler: async function(request, h) {
+            try {
+                const id = request.auth.credentials.id;
+                const user = await User.findById(id).lean();
+                return h.view('settings', { title: 'POI Settings', user: user });
+            } catch (err) {
+                return h.view('login', { errors: [{ message: err.message }] });
+            }
+        }
+    },
+    updateSettings: {
+        validate: {
+            payload: {
+                firstName: Joi.string().required(),
+                lastName: Joi.string().required(),
+                email: Joi.string()
+                    .email()
+                    .required(),
+                password: Joi.string().required()
+            },
+            options: {
+                abortEarly: false
+            },
+            failAction: function(request, h, error) {
+                return h
+                    .view('settings', {
+                        title: 'Sign up error',
+                        errors: error.details
+                    })
+                    .takeover()
+                    .code(400);
+            }
+        },
+        handler: async function(request, h) {
+            try {
+                const userEdit = request.payload;
+                const id = request.auth.credentials.id;
+                const user = await User.findById(id);
+                user.firstName = userEdit.firstName;
+                user.lastName = userEdit.lastName;
+                user.email = userEdit.email;
+                user.password = userEdit.password;
+                await user.save();
+                return h.redirect('/settings');
+            } catch (err) {
+                return h.view('main', { errors: [{ message: err.message }] });
+            }
+        }
     }
-
 };
 
 module.exports = Accounts;

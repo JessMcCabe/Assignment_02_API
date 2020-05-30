@@ -6,6 +6,7 @@ const Schema = Mongoose.Schema;
 const poiSchema = new Schema({
     name: String,
     description: String,
+    category: String,
     link: String,
     author: {
         type: Schema.Types.ObjectId,
