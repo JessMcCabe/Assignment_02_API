@@ -6,8 +6,28 @@ const Joi = require('@hapi/joi');
 const utils = require('../api/utils')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+=======
+
+
 
 const Users = {
+
+
+    authenticate: {
+        auth: false,
+        handler: async function(request, h) {
+            try {
+                const user = await User.findOne({ email: request.payload.email });
+                if (!user) {
+                    return Boom.notFound('Authentication failed. User not found');
+                }
+                const token = utils.createToken(user);
+                return h.response({ success: true, token: token }).code(201);
+            } catch (err) {
+                return Boom.notFound('internal db failure');
+            }
+        }
+    },
 
     find: {
         auth: false,

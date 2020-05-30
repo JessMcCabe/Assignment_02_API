@@ -43,7 +43,7 @@ async function init() {
         layout: true,
         isCached: false,
     });
-
+    const utils = require('./app/api/utils.js');
 
     server.auth.strategy('session', 'cookie', {
         cookie: {

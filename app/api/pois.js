@@ -28,7 +28,7 @@ const Pois = {
             strategy: 'jwt',
         },
         handler: async function(request, h) {
-            const pois = await Poi.find({ _id: request.params.id });
+            const pois = await Poi.findOne({ _id: request.params.id });
             return pois;
         }
     },
@@ -55,10 +55,12 @@ const Pois = {
             await Poi.deleteMany({});
             return { success: true };
         }
+
     }, deleteOne: {
         auth: {
             strategy: 'jwt',
         },
+
         handler: async function(request, h) {
             await Poi.deletePOI({});
             return { success: true };
