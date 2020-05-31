@@ -3,6 +3,7 @@
 const Poi = require('../models/poi');
 const Boom = require('@hapi/boom');
 const User = require('../models/user');
+const Location = require('../models/location');
 
 const Pois = {
     findAll: {
@@ -40,12 +41,15 @@ const Pois = {
             strategy: 'jwt',
         },
         handler: async function(request, h) {
+            let location = new Location(request.payload.location);
+            location = await location.save();
             let poi = new Poi(request.payload);
             const user = await User.findOne({ _id: request.params.id });
             if (!user) {
                 return Boom.notFound('No User with this id');
             }
             poi.author = user._id;
+            poi.location = location._id
             poi = await poi.save();
             return poi;
         }
