@@ -2,12 +2,44 @@
   "Location": {
     "_model": "Location",
     "one": {
-      "lng":"-6.78127",
-      "lat": "52.8373"
+      "lng":"-7.3193372",
+      "lat": "52.6505459"
     },
     "two": {
-      "lng":"-6.78144",
-      "lat": "52.8344"
+      "lng":"-6.5110848",
+      "lat": "52.2933023"
+    },
+    "three": {
+      "lng":"-8.5730734",
+      "lat": "51.9290955"
+    },
+    "four": {
+      "lng":"-8.8141113",
+      "lat": "52.6995714"
+    },
+    "five": {
+      "lng":"-7.9292638",
+      "lat": "52.3745504"
+    },
+    "six": {
+      "lng":"-9.2870545",
+      "lat": "53.5345966"
+    },
+    "seven": {
+      "lng":"-6.1667574",
+      "lat": "53.444937"
+    },
+    "eight": {
+      "lng":"-9.5336268",
+      "lat": "52.0412527"
+    },
+    "nine": {
+      "lng":"-7.8926409",
+      "lat": "52.5200795"
+    },
+    "ten": {
+      "lng":"-7.9165088",
+      "lat": "53.0967075"
     }
   },
   "users": {
@@ -22,7 +54,7 @@
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$NKAcZC92UokGEYmcDkueEOG89t30OMYnpl5eDQ11hBZgOSawm28Ti"
     },
     "lisa": {
       "firstName": "Lisa",
@@ -61,7 +93,7 @@
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508046/Blarney%20Castle.jpg",
       "author": "->users.marge",
-      "location":	"->Location.one"
+      "location":	"->Location.three"
     },
     "four": {
       "name": "Bunratty Castle",
@@ -69,7 +101,7 @@
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508027/Bunratty%20Castle.jpg",
       "author": "->users.marge",
-      "location":	"->Location.one"
+      "location":	"->Location.four"
     },
     "five": {
       "name": "Cahir Castle",
@@ -77,7 +109,7 @@
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508004/Cahir%20Castle.jpg",
       "author": "->users.lisa",
-      "location":	"->Location.one"
+      "location":	"->Location.five"
     },
     "six": {
       "name": "Ashford Castle",
@@ -85,7 +117,7 @@
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507984/Ashford%20Castle.jpg",
       "author": "->users.homer",
-      "location":	"->Location.one"
+      "location":	"->Location.six"
     },
     "seven": {
       "name": "Malahide Castle",
@@ -93,7 +125,7 @@
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507965/Malahide%20Castle.jpg",
       "author": "->users.lisa",
-      "location":	"->Location.one"
+      "location":	"->Location.seven"
     },
     "eight": {
       "name": "Ross Castle",
@@ -101,7 +133,7 @@
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507946/Ross%20Castle.jpg",
       "author": "->users.bart",
-      "location":	"->Location.one"
+      "location":	"->Location.eight"
     },
     "nine": {
       "name": "Rock Of Cashel",
@@ -109,7 +141,7 @@
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507924/Rock%20Of%20Cashel.jpg",
       "author": "->users.bart",
-      "location":	"->Location.one"
+      "location":	"->Location.nine"
     },
     "ten": {
       "name": "Birr Castle",
@@ -117,7 +149,7 @@
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507902/Birr%20Castle.jpg",
       "author": "->users.lisa",
-      "location":	"->Location.one"
+      "location":	"->Location.ten"
     }
   }
 }
