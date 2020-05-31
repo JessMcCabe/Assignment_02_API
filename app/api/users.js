@@ -51,6 +51,21 @@ const Users = {
             }
         }
     },
+    findByEmail: {
+        auth: false,
+        handler: async function(request, h) {
+            try {
+                const email = request.params.email;
+                const user = await User.findByEmail(email);
+                if (!user) {
+                    return Boom.notFound('No User with this email');
+                }
+                return user;
+            } catch (err) {
+                return Boom.notFound('No User with this email');
+            }
+        }
+    },
 
     create: {
         auth: false,
