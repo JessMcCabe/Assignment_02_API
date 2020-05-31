@@ -8,10 +8,17 @@ const poiSchema = new Schema({
     description: String,
     category: String,
     link: String,
+    location:{
+        type: Schema.Types.ObjectId,
+        ref: 'Location'
+    },
+
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     }});
+
+
 
 
 poiSchema.statics.findByName = function(name) {
