@@ -6,7 +6,7 @@ const Joi = require('@hapi/joi');
 const utils = require('../api/utils')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-=======
+
 
 
 
@@ -48,6 +48,21 @@ const Users = {
                 return user;
             } catch (err) {
                 return Boom.notFound('No User with this id');
+            }
+        }
+    },
+    findByEmail: {
+        auth: false,
+        handler: async function(request, h) {
+            try {
+                const email = request.params.email;
+                const user = await User.findByEmail(email);
+                if (!user) {
+                    return Boom.notFound('No User with this email');
+                }
+                return user;
+            } catch (err) {
+                return Boom.notFound('No User with this email');
             }
         }
     },

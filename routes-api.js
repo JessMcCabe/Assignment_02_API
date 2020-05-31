@@ -5,6 +5,7 @@ module.exports = [
     { method: 'POST', path: '/api/users/authenticate', config: Users.authenticate },
     { method: 'GET', path: '/api/users', config: Users.find },
     { method: 'GET', path: '/api/users/{id}', config: Users.findOne },
+    { method: 'GET', path: '/api/user/{email}', config: Users.findByEmail},
     { method: 'POST', path: '/api/users', config: Users.create },
     { method: 'POST', path: '/api/users/auth', config: Users.auth },
     { method: 'DELETE', path: '/api/users/{id}', config: Users.deleteOne },

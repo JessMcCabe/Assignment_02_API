@@ -10,8 +10,11 @@ const Pois = {
             strategy: 'jwt',
         },
         handler: async function(request, h) {
-            const pois = await Poi.find();
+            try{
+            const pois = await Poi.find().populate('location'.lean());
             return pois;
+        } catch (err){
+            return Boom.badImplementation(('error fetching pois'))}
         }
     },
     findByAuthor: {
@@ -56,7 +59,7 @@ const Pois = {
             return { success: true };
         }
 
-    }, deleteOne: {
+    }, deleteOnePoi: {
         auth: {
             strategy: 'jwt',
         },
