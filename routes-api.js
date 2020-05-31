@@ -2,7 +2,7 @@ const Users = require('./app/api/users');
 const Pois = require('./app/api/pois');
 module.exports = [
 
-    { method: 'POST', path: '/api/users/authenticate', config: Users.authenticate },
+    //{ method: 'POST', path: '/api/users/auth', config: Users.authenticate },
     { method: 'GET', path: '/api/users', config: Users.find },
     { method: 'GET', path: '/api/users/{id}', config: Users.findOne },
     { method: 'GET', path: '/api/user/{email}', config: Users.findByEmail},

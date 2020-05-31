@@ -11,7 +11,7 @@ const Pois = {
         },
         handler: async function(request, h) {
             try{
-            const pois = await Poi.find().populate('location'.lean());
+            const pois = await Poi.find().populate('location').lean();
             return pois;
         } catch (err){
             return Boom.badImplementation(('error fetching pois'))}
