@@ -1,4 +1,15 @@
 {
+  "Location": {
+    "_model": "Location",
+    "one": {
+      "lng":"-6.78127",
+      "lat": "52.8373"
+    },
+    "two": {
+      "lng":"-6.78144",
+      "lat": "52.8344"
+    }
+  },
   "users": {
     "_model": "User",
     "homer": {
@@ -33,14 +44,16 @@
       "description": "A beautiful castle in Kilkenny",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583264770/Kilkenny%20Castle.jpg",
-      "author": "->users.homer"
+      "author": "->users.homer",
+      "location":	"->Location.one"
     },
     "two": {
       "name": "Johnstown Castle",
       "description": "Johnstown Castle Estate, Museum & Gardens has a long and colourful story stretching over 800 years",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583264861/Johnstown%20Castle.jpg",
-      "author": "->users.homer"
+      "author": "->users.homer",
+      "location":	"->Location.two"
     },
     "three": {
       "name": "Blarney Castle",
