@@ -48,25 +48,29 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "$2b$10$L.IimKS0Yb8DJAxznZzhX./yshHOAfp0BfQR/NOk21DAG5RaNYMAW"
+      "password": "$2b$10$L.IimKS0Yb8DJAxznZzhX./yshHOAfp0BfQR/NOk21DAG5RaNYMAW",
+      "admin": "true"
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "$2b$10$NKAcZC92UokGEYmcDkueEOG89t30OMYnpl5eDQ11hBZgOSawm28Ti"
+      "password": "$2b$10$NKAcZC92UokGEYmcDkueEOG89t30OMYnpl5eDQ11hBZgOSawm28Ti",
+      "admin": "false"
     },
     "lisa": {
       "firstName": "Lisa",
       "lastName": "Simpson",
       "email": "lisa@simpson.com",
-      "password": "$2b$10$CZ9nIljGZfzVK.f0VS21VO1cMv0qgP0vDsSI4MRgYzsFcjeWBJ9YW"
+      "password": "$2b$10$CZ9nIljGZfzVK.f0VS21VO1cMv0qgP0vDsSI4MRgYzsFcjeWBJ9YW",
+      "admin": "false"
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "$2b$10$u6FT2/OtPFio/BxBPJyVOu/j5MozF8sKs4s8UdCy2IpRHzBXjwi2O"
+      "password": "$2b$10$u6FT2/OtPFio/BxBPJyVOu/j5MozF8sKs4s8UdCy2IpRHzBXjwi2O",
+      "admin": "false"
     }
   },
   "pois": {

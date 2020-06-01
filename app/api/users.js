@@ -76,7 +76,8 @@ const Users = {
                 firstName: payload.firstName,
                 lastName: payload.lastName,
                 email: payload.email,
-                password: hash                             // EDITED
+                password: hash,
+                admin: "false"// EDITED
             });
             let user = await newUser.save();
             if (user) {
