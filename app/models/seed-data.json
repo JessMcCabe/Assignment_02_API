@@ -2,12 +2,44 @@
   "Location": {
     "_model": "Location",
     "one": {
-      "lng":"-6.78127",
-      "lat": "52.8373"
+      "lng":"-7.3193372",
+      "lat": "52.6505459"
     },
     "two": {
-      "lng":"-6.78144",
-      "lat": "52.8344"
+      "lng":"-6.5110848",
+      "lat": "52.2933023"
+    },
+    "three": {
+      "lng":"-8.5730734",
+      "lat": "51.9290955"
+    },
+    "four": {
+      "lng":"-8.8141113",
+      "lat": "52.6995714"
+    },
+    "five": {
+      "lng":"-7.9292638",
+      "lat": "52.3745504"
+    },
+    "six": {
+      "lng":"-9.2870545",
+      "lat": "53.5345966"
+    },
+    "seven": {
+      "lng":"-6.1667574",
+      "lat": "53.444937"
+    },
+    "eight": {
+      "lng":"-9.5336268",
+      "lat": "52.0412527"
+    },
+    "nine": {
+      "lng":"-7.8926409",
+      "lat": "52.5200795"
+    },
+    "ten": {
+      "lng":"-7.9165088",
+      "lat": "53.0967075"
     }
   },
   "users": {
@@ -16,25 +48,25 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$L.IimKS0Yb8DJAxznZzhX./yshHOAfp0BfQR/NOk21DAG5RaNYMAW"
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$NKAcZC92UokGEYmcDkueEOG89t30OMYnpl5eDQ11hBZgOSawm28Ti"
     },
     "lisa": {
       "firstName": "Lisa",
       "lastName": "Simpson",
       "email": "lisa@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$CZ9nIljGZfzVK.f0VS21VO1cMv0qgP0vDsSI4MRgYzsFcjeWBJ9YW"
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$u6FT2/OtPFio/BxBPJyVOu/j5MozF8sKs4s8UdCy2IpRHzBXjwi2O"
     }
   },
   "pois": {
@@ -60,56 +92,64 @@
       "description": "Dating back to 1446, thousands of tourists make their way here each year to kiss the renowned Blarney Stone",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508046/Blarney%20Castle.jpg",
-      "author": "->users.marge"
+      "author": "->users.marge",
+      "location":	"->Location.three"
     },
     "four": {
       "name": "Bunratty Castle",
       "description": "The fourth castle to be built on this site, Bunratty Castle sits on a 970 AD ancient Viking trading camp",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508027/Bunratty%20Castle.jpg",
-      "author": "->users.marge"
+      "author": "->users.marge",
+      "location":	"->Location.four"
     },
     "five": {
       "name": "Cahir Castle",
       "description": "Cahir Castles is easily one of the best Irish castles. You can still see the defense structures, keep, and tower that have remained intact since its construction in 1142",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583508004/Cahir%20Castle.jpg",
-      "author": "->users.lisa"
+      "author": "->users.lisa",
+      "location":	"->Location.five"
     },
     "six": {
       "name": "Ashford Castle",
       "description": "Built in 1228, this Victorian castle has been expanded upon several times and is now both a five-star luxury hotel and a popular wedding venue",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507984/Ashford%20Castle.jpg",
-      "author": "->users.homer"
+      "author": "->users.homer",
+      "location":	"->Location.six"
     },
     "seven": {
       "name": "Malahide Castle",
       "description": "In addition to the castle and gardens, the parklands are full of things to do for the whole family",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507965/Malahide%20Castle.jpg",
-      "author": "->users.lisa"
+      "author": "->users.lisa",
+      "location":	"->Location.seven"
     },
     "eight": {
       "name": "Ross Castle",
       "description": "Said to have a ghost roaming the halls, this 15th-century castle is loaded with historic myths that you’ll be sure to hear about on your guided tour",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507946/Ross%20Castle.jpg",
-      "author": "->users.bart"
+      "author": "->users.bart",
+      "location":	"->Location.eight"
     },
     "nine": {
       "name": "Rock Of Cashel",
       "description": "Home to an extensive collection of medieval architecture and Celtic art, this enormous compex has everything you could want in a castle experience",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507924/Rock%20Of%20Cashel.jpg",
-      "author": "->users.bart"
+      "author": "->users.bart",
+      "location":	"->Location.nine"
     },
     "ten": {
       "name": "Birr Castle",
       "description": "Because it’s home to Brendan Parsons, the 7th Earl of Rosse, the castle’s residential areas aren’t always open to the public, but the gardens and grounds are full of beautiful and historic sights",
       "category": "Castle",
       "link": "https://res.cloudinary.com/dpjnmvjbp/image/upload/v1583507902/Birr%20Castle.jpg",
-      "author": "->users.lisa"
+      "author": "->users.lisa",
+      "location":	"->Location.ten"
     }
   }
 }
