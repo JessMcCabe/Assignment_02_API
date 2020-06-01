@@ -41,7 +41,11 @@ const Pois = {
             strategy: 'jwt',
         },
         handler: async function(request, h) {
-            let location = new Location(request.payload.location);
+            let newlocation = new Location(request.payload.location);
+            let location = new Location ;
+            location.lng = newlocation.lng;
+            location.lat = newlocation.lat;
+
             location = await location.save();
             let poi = new Poi(request.payload);
             const user = await User.findOne({ _id: request.params.id });
