@@ -13,15 +13,25 @@ const saltRounds = 10;
 const Users = {
 
 
-    authenticate: {
+    authAdmin: {
         auth: false,
         handler: async function(request, h) {
+            //const payload = request.payload;
+            const { email, password } = request.payload;
             try {
-                const user = await User.findOne({ email: request.payload.email });
-                if (!user) {
-                    return Boom.notFound('Authentication failed. User not found');
+                let user = await User.findByEmail(email);
+                if (user.admin == "false") {
+                    const message = 'Not a recognised administrator. Please try user log-in above';
+                    throw Boom.unauthorized(message);
                 }
-                const token = utils.createToken(user);
+                if (!user) {
+                    const message = 'Email address is not registered';
+                    throw Boom.unauthorized(message);
+                }
+                if (!await user.comparePassword(password)) {         // EDITED (next few lines)
+                    const message = 'Password mismatch';
+                    throw Boom.unauthorized(message);
+                } const token = utils.createToken(user);
                 return h.response({ success: true, token: token }).code(201);
             } catch (err) {
                 return Boom.notFound('internal db failure');
