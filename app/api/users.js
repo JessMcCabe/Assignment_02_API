@@ -95,6 +95,33 @@ const Users = {
             }
         }
     },
+    update: {//Update here - do not edit email, used to look up the user for now
+        auth: false,
+        handler: async function(request, h) {
+            const payload = request.payload;
+            const emailAdd = payload.email;
+            const email = emailAdd
+            const user = await User.findByEmail(emailAdd);//find the current user by ID
+            //check if details differ, if they do, update with new details sent in request
+            if(payload.firstName !== user.firstName){
+                //update first name
+                user.firstName = payload.firstName;
+            }
+            if(payload.lastName !== user.lastName){
+                //update last name
+                user.lastName = payload.lastName;
+            }
+
+            const newHash = await bcrypt.hash(payload.password, saltRounds);
+            //const origHash = await bcrypt.hash(payload.password, saltRounds);
+            if(!await user.comparePassword(payload.password)){
+                //update password name
+                user.password = newHash;
+            }
+            user.save();
+
+        }
+    },
 
     auth: {
         auth: false,
@@ -127,11 +154,15 @@ const Users = {
         }
     },
 
-    deleteOne: {
+    deleteUser: {
         auth: false,
         handler: async function(request, h) {
-            const user = await User.deleteOne({ _id: request.params.id });
-            if (user) {
+            const payload = request.payload;
+            const email = payload.email;
+            let user = await User.findByEmail(email);//find the current user by ID
+            let userId = user._id;
+             await User.deleteOne(user);
+            if (!user) {
                 return { success: true };
             }
             return Boom.notFound('id not found');
