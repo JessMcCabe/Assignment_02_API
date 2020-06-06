@@ -10,11 +10,16 @@ const userSchema = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    password: String
+    password: String,
+    admin: String
 });
 
 userSchema.statics.findByEmail = function(email) {
     return this.findOne({ email: email });
+};
+
+userSchema.statics.deleteOne = function(user) {
+    return this.deleteOne({user: user});
 };
 
 userSchema.methods.comparePassword = async function(candidatePassword) {        // EDITED
