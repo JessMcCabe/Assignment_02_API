@@ -2,14 +2,16 @@ const Users = require('./app/api/users');
 const Pois = require('./app/api/pois');
 module.exports = [
 
-    //{ method: 'POST', path: '/api/users/auth', config: Users.authenticate },
+    { method: 'POST', path: '/api/users/authAdmin', config: Users.authAdmin },
     { method: 'GET', path: '/api/users', config: Users.find },
     { method: 'GET', path: '/api/users/{id}', config: Users.findOne },
     { method: 'GET', path: '/api/user/{email}', config: Users.findByEmail},
     { method: 'POST', path: '/api/users', config: Users.create },
     { method: 'POST', path: '/api/users/auth', config: Users.auth },
-    { method: 'DELETE', path: '/api/users/{id}', config: Users.deleteOne },
+    //{ method: 'DELETE', path: '/api/users/{id}', config: Users.deleteOne },
     { method: 'DELETE', path: '/api/users', config: Users.deleteAll },
+    { method: 'GET', path: '/api/user/delete/', config: Users.deleteUser },
+    { method: 'POST', path: '/api/user/update', config: Users.update },
 
     { method: 'GET', path: '/api/poi', config: Pois.findAll },
     { method: 'GET', path: '/api/poi/{id}', config: Pois.findByID },

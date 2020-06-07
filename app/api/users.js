@@ -13,15 +13,25 @@ const saltRounds = 10;
 const Users = {
 
 
-    authenticate: {
+    authAdmin: {
         auth: false,
         handler: async function(request, h) {
+            //const payload = request.payload;
+            const { email, password } = request.payload;
             try {
-                const user = await User.findOne({ email: request.payload.email });
-                if (!user) {
-                    return Boom.notFound('Authentication failed. User not found');
+                let user = await User.findByEmail(email);
+                if (user.admin == "false") {
+                    const message = 'Not a recognised administrator. Please try user log-in above';
+                    throw Boom.unauthorized(message);
                 }
-                const token = utils.createToken(user);
+                if (!user) {
+                    const message = 'Email address is not registered';
+                    throw Boom.unauthorized(message);
+                }
+                if (!await user.comparePassword(password)) {         // EDITED (next few lines)
+                    const message = 'Password mismatch';
+                    throw Boom.unauthorized(message);
+                } const token = utils.createToken(user);
                 return h.response({ success: true, token: token }).code(201);
             } catch (err) {
                 return Boom.notFound('internal db failure');
@@ -76,12 +86,40 @@ const Users = {
                 firstName: payload.firstName,
                 lastName: payload.lastName,
                 email: payload.email,
-                password: hash                             // EDITED
+                password: hash,
+                admin: "false"// EDITED
             });
             let user = await newUser.save();
             if (user) {
                 return h.response(user).code(201);
             }
+        }
+    },
+    update: {//Update here - do not edit email, used to look up the user for now
+        auth: false,
+        handler: async function(request, h) {
+            const payload = request.payload;
+            const emailAdd = payload.email;
+            const email = emailAdd
+            const user = await User.findByEmail(emailAdd);//find the current user by ID
+            //check if details differ, if they do, update with new details sent in request
+            if(payload.firstName !== user.firstName){
+                //update first name
+                user.firstName = payload.firstName;
+            }
+            if(payload.lastName !== user.lastName){
+                //update last name
+                user.lastName = payload.lastName;
+            }
+
+            const newHash = await bcrypt.hash(payload.password, saltRounds);
+            //const origHash = await bcrypt.hash(payload.password, saltRounds);
+            if(!await user.comparePassword(payload.password)){
+                //update password name
+                user.password = newHash;
+            }
+            user.save();
+
         }
     },
 
@@ -116,11 +154,15 @@ const Users = {
         }
     },
 
-    deleteOne: {
+    deleteUser: {
         auth: false,
         handler: async function(request, h) {
-            const user = await User.deleteOne({ _id: request.params.id });
-            if (user) {
+            const payload = request.payload;
+            const email = payload.email;
+            let user = await User.findByEmail(email);//find the current user by ID
+            let userId = user._id;
+             await User.deleteOne(user);
+            if (!user) {
                 return { success: true };
             }
             return Boom.notFound('id not found');
